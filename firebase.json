@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "build",
+    "site": "kalender-setc",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

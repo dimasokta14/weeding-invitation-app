@@ -1,109 +1,130 @@
 import React from 'react'
-import styled from 'styled-components'
+import {createMedia} from '@artsy/fresnel'
+import {
+  Container,
+  Icon,
+  Image,
+  Menu,
+  Sidebar
+} from 'semantic-ui-react'
 
-const NavBar = () => {
-  return (
-    <Header>
-      <Nav>
-        <Gutter>
-          <FlexItemCenter>
-            <div>
-              <Logo>
-                <a href='/' style={{display: 'block', fontSize: 24}}>
-                  📰
-                </a>
-              </Logo>
-            </div>
-            <NavWrapper>
-              <div style={{flexShrink: 0}}>
-                <ul>
-                  <ListItem>
-                    order
-                  </ListItem>
-                  <ListItem>
-                    cards
-                  </ListItem>
-                  <ListItem>
-                    gift
-                  </ListItem>
-                </ul>
-              </div>
-              <NavbarRight>
-                <FlexWrapper>
-                  <FindUs>
-                  🗡️ Find Us
-                  </FindUs>
-                </FlexWrapper>
-              </NavbarRight>
-            </NavWrapper>
-          </FlexItemCenter>
-        </Gutter>
-      </Nav>
-    </Header>
+import Logo from "../assets/logo-setc-withbg.png"
+
+const AppMedia = createMedia({
+  breakpoints:{
+    mobile: 320,
+    tablet: 768,
+    computer: 992,
+    largeScreen: 1200,
+    widescreen: 1920
+  }
+})
+
+const mediaStyles = AppMedia.createMediaStyle()
+const { Media, MediaContextProvider } = AppMedia
+
+const NavbarMobile = (props) => {
+  const {
+    children,
+    leftItems,
+    onPusherClick,
+    onToggle,
+    rightItems,
+    visible
+  } = props
+
+  return(
+    <Sidebar.Pushable>
+      <Sidebar
+        as={Menu}
+        animation="overlay"
+        icon="labeled"
+        inverted
+        items={leftItems}
+        vertical
+        visible={visible}
+      />
+      <Sidebar.Pusher
+        dimmed={visible}
+        onClick={onPusherClick}
+        style={{backgroundColor:  "#eaeaea" }}
+      >
+        <Menu fixed="top" inverted>
+          <Menu.Item>
+            <a href="https://setc.id/" target="blank">
+              <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
+            </a>
+          </Menu.Item>
+          <Menu.Item onClick={onToggle}>
+            <Icon name="sidebar" />
+          </Menu.Item>
+          <Menu.Menu position="right">
+            {rightItems.map((item) => (
+              <Menu.Item {...item} />
+            ))}
+          </Menu.Menu>
+        </Menu>
+        {/* {children} */}
+      </Sidebar.Pusher>
+    </Sidebar.Pushable>
   )
 }
 
-const Header = styled.header`
-  position: relative;
-  z-index: 2;
-`
+const NavbarDesktop = (props) => {
+  const { leftItems, rightItems } = props;
 
-const Nav = styled.nav`
-  box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 2px 2px rgb(0 0 0 / 6%), 0 0 2px rgb(0 0 0 / 7%);
-`
-const Gutter = styled.div`
-  padding-left: 2.4rem;
-  padding-right: 2.4rem;
-`
+  return (
+    <Menu fixed="top" inverted>
+      <Menu.Item>
+        <Image size="mini" src={Logo} />
+      </Menu.Item>
 
-const FlexItemCenter = styled.div`
-  align-items: center !important;
-  display: flex !important;
-`
-const Logo = styled.div`
-  width: 51px;
-  height: 51px;
-  flex-shrink: 0;
-  margin-right: 2.4rem !important;
-  margin-top: 0rem !important;
-  margin-bottom: 0rem !important;
-`
-const NavWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-`
-const ListItem = styled.li`
-  font-family: 'Playfair Display', serif;
-  padding-left: 2.4rem;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: .85rem;
-  font-weight: 600;
-  :first-of-type{
-    padding-left: 0px;
+      {leftItems.map((item) => (
+        <Menu.Item {...item} />
+      ))}
+
+      <Menu.Menu position="right">
+        {rightItems.map((item) => (
+          <Menu.Item {...item} />
+        ))}
+      </Menu.Menu>
+    </Menu>
+  );
+}
+
+const NavBarChildren = (props) => (
+  <Container style={{ marginTop: "5em" }}>{props.children}</Container>
+);
+
+const Navbar = (props) => {
+  const { children, leftItems, rightItems } = props
+
+  const [visible, setVisible] = React.useState(false)
+
+  const handlePusher = () => {
+    if (visible) setVisible(false)
   }
-`
-const NavbarRight = styled.div`
-  font-size: 1.4rem;
-  margin-left: auto !important;
-  flex-shrink: 0 !important;
-`
-const FlexWrapper = styled.div`
-  margin-left: 4rem !important;
-  align-items: center !important;
-  display: flex !important;
-`
 
-const FindUs = styled.a`
-  text-align: inherit;
-  text-decoration: none;
-  font-weight: 600;
-  padding-right: .8rem;
-  margin-right: 4rem;
-  display: inline-block!important;
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-`
+  const handleToggle = () => setVisible(!visible)
+  return (
+      <div style={{background: "#ededed"}}>
+        <Media at="mobile">
+          <NavbarMobile
+            leftItems={leftItems}
+            onPusherClick={handlePusher}
+            onToggle={handleToggle}
+            rightItems={rightItems}
+            visible={visible}
+          >
+            <NavBarChildren>{children}</NavBarChildren>
+          </NavbarMobile>
+        </Media>
+        <Media greaterThan="mobile">
+          <NavbarDesktop leftItems={leftItems} rightItems={rightItems} />
+          <NavBarChildren>{children}</NavBarChildren>
+        </Media>
+      </div>
+  )
+}
 
-export default NavBar
+export default Navbar

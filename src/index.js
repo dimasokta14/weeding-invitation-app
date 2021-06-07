@@ -4,10 +4,23 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import 'semantic-ui-css/semantic.min.css'
+
+import {config} from './configdb'
+// FIrebase
+import {
+  FirebaseDatabaseProvider
+} from '@react-firebase/database'
+
+import firebase from 'firebase'
+
+require('dotenv').config()
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FirebaseDatabaseProvider firebase={firebase} {...config}>
+      <App />
+    </FirebaseDatabaseProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
