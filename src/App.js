@@ -64,6 +64,12 @@ const BottoNavContent = styled.a`
   align-items: center;
   color: inherit;
   padding: 10px;
+  &:hover {
+    color: white !important;
+  };
+  &:active {
+    color: white !important;
+  }
 `
 
 const MenuItem = styled(Menu.Item)`
@@ -282,9 +288,15 @@ export default class App extends Component {
 
 
 
-  // componentDidMount(){
-  //   this.startConnectionToGoogle().then((d) => console.log(d))
-  // }
+  componentDidMount(){
+    // this.startConnectionToGoogle().then((d) => console.log(d))
+    const script = document.createElement("script");
+    script.src = "https://apis.google.com/js/api.js";
+    script.async = true;
+    script.onload = () => this.scriptLoaded();
+  
+    document.body.appendChild(script);
+  }
 
   handleOverlayRef = (c) => {
     const { overlayRect } = this.state
@@ -292,6 +304,22 @@ export default class App extends Component {
     if (!overlayRect) {
       this.setState({ overlayRect: _.pick(c.getBoundingClientRect(), 'height', 'width') })
     }
+  }
+
+  scriptLoaded() {
+    window.gapi.load('auth2', () => {
+      return window.gapi.client.init({
+        'apiKey': settings.API_KEY,
+        'clientId' : settings.CLIENT_ID,
+        'scope': settings.SCOPES,
+      }).then(() => {
+        return window.gapi.client.request({
+          'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names'
+        }).then((res) => {
+          console.log(res.status)
+        })
+      })
+    })
   }
 
   handleClickReminder = () => {
@@ -442,8 +470,8 @@ export default class App extends Component {
              }
              return (
               <StyledContainer>
-                <div id="pelatihan"/>
-                <Header as='h3' textAlign='center'>PELATIHAN</Header>
+                <div id="webinar"/>
+                <Header as='h3' textAlign='center'>WEBINAR</Header>
                 <Grid columns='equal'>
                   {
                     d.value && Object.values(d.value).map((data, index) => (
@@ -520,7 +548,7 @@ export default class App extends Component {
              }
              return (
               <StyledContainer>
-                <div id="pelatihan"/>
+                <div id="lainnya"/>
                 <Header as='h3' textAlign='center'>LAINNYA</Header>
                 <Grid columns='equal'>
                   {
@@ -605,11 +633,7 @@ export default class App extends Component {
               <BottoNavContent
                 href="#webinar"
               >
-                <img
-                  src={iWebinar}
-                  width="25px"
-                  style={{marginBottom: "7px"}}
-                />
+                <i className='fas fa-tv' style={{marginBottom: "7px", fontSize:"20px"}}/>
                 Webinar
               </BottoNavContent>
             </MenuItem>
@@ -617,11 +641,7 @@ export default class App extends Component {
               <BottoNavContent
                 href="#lainnya"
               >
-                <img
-                  src={iLainnya}
-                  width="25px"
-                  style={{marginBottom: "7px"}}
-                />
+                <i className='fas fa-braille' style={{marginBottom: "7px", fontSize:"20px"}}/>
                 Lainnya
               </BottoNavContent>
             </MenuItem>
