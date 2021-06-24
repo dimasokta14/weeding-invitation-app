@@ -1,26 +1,43 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
-
-import {config} from './configdb'
-// FIrebase
+import store from './store'
 import {
-  FirebaseDatabaseProvider
-} from '@react-firebase/database'
-
+  Provider
+} from 'react-redux'
+import {
+  ReactReduxFirebaseProvider
+} from 'react-redux-firebase'
 import firebase from 'firebase'
+import { createFirestoreInstance } from 'redux-firestore'
 
-require('dotenv').config()
+import Main from './main'
+
+const rrfConfig = {
+  userProfile: 'users',
+  presence: 'presence',
+  sessions: 'sessions'
+}
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+}
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <FirebaseDatabaseProvider firebase={firebase} {...config}>
-      <App />
-    </FirebaseDatabaseProvider>
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <Main/>
+      </ReactReduxFirebaseProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

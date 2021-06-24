@@ -1,7 +1,7 @@
 {
   "hosting": {
     "public": "build",
-    "site": "kalender-setc",
+    "site": "wedding-defie-tegar",
     "ignore": [
       "firebase.json",
       "**/.*",

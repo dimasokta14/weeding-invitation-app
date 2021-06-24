@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "setc-integrated-system"
+    "default": "cube",
+    "master": "setc-integrated-system"
   }
 }

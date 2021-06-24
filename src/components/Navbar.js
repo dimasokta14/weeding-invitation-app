@@ -8,7 +8,9 @@ import {
   Sidebar
 } from 'semantic-ui-react'
 
-import Logo from "../assets/logo-setc-withbg.png"
+import imgbg from '../assets/35.png'
+import Logo from "../assets/36.png"
+import styled from 'styled-components'
 
 const AppMedia = createMedia({
   breakpoints:{
@@ -19,6 +21,33 @@ const AppMedia = createMedia({
     widescreen: 1920
   }
 })
+
+
+const LeftMenu = styled(Menu.Menu)`
+  width: 35% !important;
+  background: url(${imgbg});
+  background-repeat: no-repeat;
+  background-size: 170px;
+  background-position-y: -60px;
+  background-position-x: -30px;
+`
+const RightMenu = styled(Menu.Menu)`
+  width: 35% !important;
+  background: url(${imgbg});
+  background-repeat: no-repeat;
+  background-size: 170px;
+  background-position-y: -60px;
+  background-position-x: -30px;
+  transform: rotateY(180deg);
+`
+const CenterMenu = styled(Menu.Menu)`
+width: 30% !important;
+background: url(${Logo});
+background-repeat: no-repeat;
+background-size: 120px;
+background-position-y: -50px;
+background-position-x: -5px;
+`
 
 const mediaStyles = AppMedia.createMediaStyle()
 const { Media, MediaContextProvider } = AppMedia
@@ -50,19 +79,16 @@ const NavbarMobile = (props) => {
         style={{backgroundColor:  "#eaeaea" }}
       >
         <Menu fixed="top" inverted>
+          <LeftMenu position='left'>
+            <Menu.Item>
+              <Image size="mini" src={imgbg} />
+            </Menu.Item>
+          </LeftMenu>
           <Menu.Item>
-            <a href="https://setc.id/" target="blank">
-              <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
-            </a>
+            <Image size="mini" src={Logo} />
           </Menu.Item>
-          <Menu.Item onClick={onToggle}>
-            <Icon name="sidebar" />
-          </Menu.Item>
-          <Menu.Menu position="right">
-            {rightItems.map((item) => (
-              <Menu.Item {...item} />
-            ))}
-          </Menu.Menu>
+          <RightMenu position='right'>
+          </RightMenu>
         </Menu>
         {/* {children} */}
       </Sidebar.Pusher>
@@ -74,12 +100,12 @@ const NavbarDesktop = (props) => {
   const { leftItems, rightItems } = props;
 
   return (
-    <Menu fixed="top" inverted>
-      <Menu.Item>
-        <Image size="mini" src={Logo} />
-      </Menu.Item>
+    <Menu fixed="top" inverted style={{backgroundImage: 'linear-gradient( white, transparent )', backgroundColor: 'rgba(248, 255, 251, 0.05)',height: '100px'}}>
+      <LeftMenu position='left'/>
+      <CenterMenu/>
+      <RightMenu position='right'/>
 
-      {leftItems.map((item) => (
+      {/* {leftItems.map((item) => (
         <Menu.Item {...item} />
       ))}
 
@@ -87,7 +113,7 @@ const NavbarDesktop = (props) => {
         {rightItems.map((item) => (
           <Menu.Item {...item} />
         ))}
-      </Menu.Menu>
+      </Menu.Menu> */}
     </Menu>
   );
 }
@@ -110,18 +136,18 @@ const Navbar = (props) => {
       <div style={{background: "#ededed"}}>
         <Media at="mobile">
           <NavbarMobile
-            leftItems={leftItems}
+            // leftItems={leftItems}
             onPusherClick={handlePusher}
             onToggle={handleToggle}
-            rightItems={rightItems}
+            // rightItems={rightItems}
             visible={visible}
           >
-            <NavBarChildren>{children}</NavBarChildren>
+            {/* <NavBarChildren>{children}</NavBarChildren> */}
           </NavbarMobile>
         </Media>
         <Media greaterThan="mobile">
           <NavbarDesktop leftItems={leftItems} rightItems={rightItems} />
-          <NavBarChildren>{children}</NavBarChildren>
+          {/* <NavBarChildren>{children}</NavBarChildren> */}
         </Media>
       </div>
   )
