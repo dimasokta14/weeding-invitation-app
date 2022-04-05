@@ -36,6 +36,17 @@ import CovidProtocol from "./components/CovidProtocol";
 import CountDownMap from "./components/CountDownMap";
 import { GiftModal } from "./components/GiftModal";
 
+const StyledCard = styled(Card)`
+	background-image: url(${CoverImg}) !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	min-height: 100vh !important;
+	min-width: 100% !important;
+	background-position-x: center !important;
+	background-position-y: -30px !important;
+	box-shadow: none !important;
+`;
+
 const MainContent = styled(Container)`
 	background: #f8fffb;
 	padding: 0px;
@@ -118,6 +129,18 @@ const Wrapper = styled.div`
 	padding: 80px 20px;
 	margin-top: 20px;
 `;
+
+const StyledContainerDayDate = styled.div`
+	margin: 0px !important;
+`;
+
+const Loading = () => (
+	<Segment
+		style={{ background: "transparent", boxShadow: "none", border: "none" }}
+	>
+		<Loader size="large" active inline="centered" />
+	</Segment>
+);
 
 function App() {
 	const [renderSplashScreen, setRenderSplashScreen] = useState(true);
