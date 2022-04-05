@@ -1,10 +1,8 @@
 import _ from "lodash";
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Container, Grid, Segment, Card, Loader } from "semantic-ui-react";
 import styled from "styled-components";
-import Logo from "./assets/logo.png";
 import Decor from "./assets/decor.svg";
-import Canvas from "./components/Canvas";
 
 import CoverImg from "./assets/hero.png";
 import { useSpring, animated } from "react-spring";
@@ -22,13 +20,10 @@ import Navbar from "./components/Navbar";
 import BottomNav from "./components/BottomNav";
 import DayDate from "./components/DayDate";
 
-import Deck from "./components/Deck";
 import PhotoDeck from "./components/PhotoDeck";
 
-import Map from "./components/Map";
 import Penutup from "./components/Penutup";
 import RSVP from "./components/RSVP";
-import Amplop from "./components/Amplop";
 
 // img
 import FmImg from "./assets/asset_fm.png";
@@ -36,31 +31,10 @@ import MImg from "./assets/asset_m.png";
 import FlowerF from "./assets/ff.png";
 import FlowerFl from "./assets/ff_l.png";
 
-import SplashScreen from "./components/SplashScreen";
 import AttendersComponent from "./components/AttendersComponent";
 import CovidProtocol from "./components/CovidProtocol";
-import { Title } from "./components/Title";
 import CountDownMap from "./components/CountDownMap";
 import { GiftModal } from "./components/GiftModal";
-
-const leftItems = [
-	{ as: "a", content: "Kalender Kegiatan Juni 2021", key: "home" },
-];
-const rightItems = [
-	{ as: "a", content: "Kontak", key: "kontak", href: "tel:081233033053" },
-	// { SearchBar }
-];
-
-const StyledCard = styled(Card)`
-	background-image: url(${CoverImg}) !important;
-	background-repeat: no-repeat !important;
-	background-size: cover !important;
-	min-height: 100vh !important;
-	min-width: 100% !important;
-	background-position-x: center !important;
-	background-position-y: -30px !important;
-	box-shadow: none !important;
-`;
 
 const MainContent = styled(Container)`
 	background: #f8fffb;
@@ -144,18 +118,6 @@ const Wrapper = styled.div`
 	padding: 80px 20px;
 	margin-top: 20px;
 `;
-
-const StyledContainerDayDate = styled.div`
-	margin: 0px !important;
-`;
-
-const Loading = () => (
-	<Segment
-		style={{ background: "transparent", boxShadow: "none", border: "none" }}
-	>
-		<Loader size="large" active inline="centered" />
-	</Segment>
-);
 
 function App() {
 	const [renderSplashScreen, setRenderSplashScreen] = useState(true);
