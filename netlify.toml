@@ -1,18 +1,8 @@
 [build]
   command = "yarn build"
-  functions = "netlify/functions"
+  functions = ".netlify/functions"
   publish = "public"
 
 [dev]
   command = "yarn start"
   port = 3000
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions"
-  status = 200
-
-[[headers]]
-  for = "/build/*"
-  [headers.values]
-    "Cache-Control" = "public, max-age=31536000, s-maxage=31536000"
