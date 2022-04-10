@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { Grid, Segment, Form, Button } from "semantic-ui-react";
@@ -33,7 +33,6 @@ const StyledButton = styled(Button)`
 const AnimatedForm = animated(Form);
 
 const RSVP = (props) => {
-	const firebase = useFirebase();
 	const [values, setValues] = React.useState({
 		nama: "",
 		whatsapp: "",
@@ -91,6 +90,14 @@ const RSVP = (props) => {
 			Swal.fire("Oppssss!", err, "error");
 		}
 	};
+
+	useEffect(() => {
+		const newGetRequest = fetch("/.netlify/functions/database_fauna").then(
+			(res) => console.log(res)
+		);
+		// const newListJson = newGetRequest.json();
+		// console.log(newListJson);
+	}, []);
 	return (
 		<Grid columns="equal">
 			<Grid.Column mobile={16} computer={16} tablet={16}>
@@ -154,10 +161,4 @@ const RSVP = (props) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		create: (data) => dispatch(createTamu(data)),
-	};
-};
-
-export default connect(null, mapDispatchToProps)(RSVP);
+export default RSVP;

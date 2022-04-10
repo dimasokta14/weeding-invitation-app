@@ -77,8 +77,8 @@ const WeddingTimer = ({ expiryTimestamp }) => {
 	);
 };
 
-const CountDownMap = () => {
-	const time = new Date(2022, 6, 25, 11);
+const CountDownMap = ({ pos_section }) => {
+	const time = new Date(2022, 4, 8, 9);
 	time.setSeconds(time.getSeconds() + 600);
 
 	const style_timer_animated = useSpring({
@@ -99,7 +99,6 @@ const CountDownMap = () => {
 				width: "100%",
 			}}
 		>
-			{/* <img src={Decor} height="30px" style={{ marginBottom: "-10px" }} /> */}
 			<ScaleUpImageDecorAnimation src={Decor} />
 			<FlipUpTitleAnimation text="Countdown" />
 			<animated.div style={style_timer_animated}>
@@ -117,10 +116,10 @@ const CountDownMap = () => {
 			>
 				<Map />
 				<StyledButtonCalendar
-					href="https://calendar.google.com/calendar/u/0/r/eventedit?dates=20230212T020000Z/20230212T050000Z&text=Juliet+%26+Romeo+Wedding&details=Praatfika+%26+Ratna+Wedding+on+Sunday,+05+May+2022&location=+Jl.+Depok,+Kdemangan,+Batang,+Jawa%20Tengah"
+					href="https://calendar.google.com/calendar/u/0/r/eventedit?dates=20220508T020000Z/20220508T050000Z&text=Praatfike+%26+Ratna+Wedding&details=Praatfika+%26+Ratna+Wedding+on+Sunday,+08+May+2022&location=Jl.%20Pendem%20Raya%20RT.%2002%20/%20RW.%2006%20Dusun,%20Jl.%20Pendem%20Raya%20Dusun%20II,%20Jarum,%20Kec.%20Bayat,%20Kabupaten%20Klaten,%20Jawa%20Tengah%2057462"
 					target="_blank"
 				>
-					Add To Google Calendar
+					Tambahkan ke kalender
 				</StyledButtonCalendar>
 			</animated.div>
 		</div>

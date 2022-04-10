@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Container, Grid, Card } from "semantic-ui-react";
 import styled from "styled-components";
-import DecorImg from "../assets/dot.png";
+import ImageFlower from "../assets/justmarried.png";
 import { useSpring, animated } from "react-spring";
 
 const AttendersWrapper = styled(Container)`
-	background: rgba(255, 255, 255, 0.4);
+	background: #f8fffb;
 	width: 100%;
 	max-width: 100%;
 	padding: 20px;
@@ -67,18 +67,19 @@ const AttendersComponent = () => {
 			<Grid.Column mobile={16} computer={16} tablet={16}>
 				<animated.div style={styles}>
 					<JustPrantaWrapper>
+						<img src={ImageFlower} width="300px" />
 						<p style={{ fontSize: "20px", fontWeight: "600" }}>
 							The Wedding of
 						</p>
 						<StyledText>Praatfika & Ratna</StyledText>
 						<DateText>08 Mei 2022</DateText>
-						<AttendersCard>
+						{/* <AttendersCard>
 							<i style={{ textAlign: "center" }}>
 								Kepada Yth <br /> Bapak/Ibu/Saudara/i
 							</i>
 							<AttendeesName>Dr. Cahyo Wibowo Odum</AttendeesName>
 							<span style={{ fontStyle: "italic" }}>di Jember</span>
-						</AttendersCard>
+						</AttendersCard> */}
 					</JustPrantaWrapper>
 				</animated.div>
 			</Grid.Column>

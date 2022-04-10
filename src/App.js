@@ -1,8 +1,16 @@
 import _ from "lodash";
 import React, { useEffect, useState, useCallback } from "react";
-import { Container, Grid, Segment, Card, Loader } from "semantic-ui-react";
+import {
+	Container,
+	Grid,
+	Segment,
+	Card,
+	Loader,
+	Icon,
+} from "semantic-ui-react";
 import styled from "styled-components";
 import Decor from "./assets/decor.svg";
+import FlowerPattern from "./assets/floral.png";
 
 import CoverImg from "./assets/hero.png";
 import { useSpring, animated } from "react-spring";
@@ -13,6 +21,7 @@ import {
 	LeftRightAnimation,
 	RightLeftAnimation,
 } from "./helpers/animation";
+import music_acc from "./assets/audio.mp3";
 
 import useWindowPosition from "./hooks/useWindowPosition";
 
@@ -35,16 +44,22 @@ import AttendersComponent from "./components/AttendersComponent";
 import CovidProtocol from "./components/CovidProtocol";
 import CountDownMap from "./components/CountDownMap";
 import { GiftModal } from "./components/GiftModal";
+import { rgba } from "@react-spring/shared";
+import { RsvpProvider } from "./context/RsvpContext";
 
 const StyledCard = styled(Card)`
-	background-image: url(${CoverImg}) !important;
-	background-repeat: no-repeat !important;
-	background-size: cover !important;
 	min-height: 100vh !important;
 	min-width: 100% !important;
-	background-position-x: center !important;
-	background-position-y: -30px !important;
 	box-shadow: none !important;
+	background: #f8fffb !important;
+	&:after {
+		background-image: url(${FlowerPattern}) !important;
+		background-repeat: no-repeat !important;
+		background-size: cover !important;
+		background-position-x: center !important;
+		background-position-y: -30px !important;
+		opacity: 0.4;
+	}
 `;
 
 const MainContent = styled(Container)`
@@ -134,6 +149,30 @@ const StyledContainerDayDate = styled.div`
 	margin: 0px !important;
 `;
 
+const BrideContainer = animated(Grid);
+const FloatingButton = styled.a`
+	width: 62px;
+	height: 62px;
+	line-height: 62px;
+	display: block;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	border: 2px solid #d991a4;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	position: fixed;
+	z-index: 10;
+	color: #fff;
+	background-color: #d991a4;
+	bottom: 20px;
+	right: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
 const Loading = () => (
 	<Segment
 		style={{ background: "transparent", boxShadow: "none", border: "none" }}
@@ -144,6 +183,8 @@ const Loading = () => (
 
 function App() {
 	const [renderSplashScreen, setRenderSplashScreen] = useState(true);
+	const [is_playing_music, setIsPlayingMusic] = useState(true);
+	const music = new Audio(music_acc);
 	const animated_deck_photo = useSpring({
 		from: { opacity: 0 },
 		to: { opacity: 1 },
@@ -160,10 +201,30 @@ function App() {
 		setTimeout(() => setRenderSplashScreen(!renderSplashScreen), 2000);
 	}, []);
 
+	useEffect(() => {
+		if (is_playing_music) {
+			music.play();
+		} else {
+			music.pause();
+			music.currentTime = 0;
+		}
+	}, [is_playing_music]);
+
 	const pos_section = useWindowPosition();
 
+	const animated_bride = useSpring({
+		from: { transform: "translateY(100%)", opacity: 0 },
+		to: [{ transform: "translateY(0%)", opacity: 1 }],
+		config: { duration: "300" },
+		loop: false,
+	});
+
 	return (
-		<div style={{ background: "#f8fffb" }} onScroll={onScroll}>
+		<Container
+			style={{
+				background: "#f8fffb",
+			}}
+		>
 			<Navbar />
 			<MainContent>
 				<Grid columns="equal">
@@ -225,42 +286,43 @@ function App() {
 				{pos_section > 1100 && (
 					<LeftRightAnimation>
 						<Grid.Column mobile={8} computer={8} tablet={8}>
-							<img src={FmImg} width="100%" style={{ borderRadius: "10px" }} />
+							<img
+								src={FlowerPattern}
+								width="100%"
+								style={{ borderRadius: "10px" }}
+							/>
 						</Grid.Column>
 						<Grid.Column mobile={8} computer={8} tablet={8}>
-							<h3 className="title">
-								Ratnasari,{" "}
-								<span style={{ fontSize: "16px", textTransform: "none" }}>
-									S.Hut
-								</span>
-							</h3>
+							<h3 className="title">Ratna Yulianti</h3>
 							<p className="paragraph">
-								Putri Kedua dari Bapak <b>Nanang Ahmad</b> dan Ibu <b>Ibu</b>
+								Putri Pertama dari pasangan Bapak <b>Jawardi</b> dan Ibu
+								<b> Endang Sri Rahayuningsih</b>
 							</p>
-							<p className="subtitle">Jl. Balebak</p>
+							<p className="subtitle">
+								Dk. Pendem RT02/RW06, Ds. Jarum, Kec. Bayat, Kab. Klaten, Jawa
+								Tengah
+							</p>
 						</Grid.Column>
-					</LeftRightAnimation>
-				)}
-				{pos_section > 1300 && (
-					<RightLeftAnimation style={{ marginBottom: "20px" }}>
 						<Grid.Column mobile={8} computer={8} tablet={8}>
 							<h3 className="title" style={{ textAlign: "right" }}>
-								Praatfika,{" "}
-								<span style={{ fontSize: "16px", textTransform: "none" }}>
-									S.Hut
-								</span>
+								Pra'atfika
 							</h3>
 							<p className="subtitle" style={{ textAlign: "right" }}>
-								Putra Kedua dari Bapak <b>Nanang Ahmad</b> dan Ibu <b>Ibu</b>
+								Putra Kedua dari Bapak <b>Sutikno</b> dan Ibu <b>Nurjanah</b>
 							</p>
 							<p className="subtitle" style={{ textAlign: "right" }}>
-								Jl. Balebak
+								Dk. Pendem RT02/RW06, Ds. Jarum, Kec. Bayat, Kab. Klaten, Jawa
+								Tengah
 							</p>
 						</Grid.Column>
 						<Grid.Column mobile={8} computer={8} tablet={8}>
-							<img src={MImg} width="100%" style={{ borderRadius: "10px" }} />
+							<img
+								src={FlowerPattern}
+								width="100%"
+								style={{ borderRadius: "10px" }}
+							/>
 						</Grid.Column>
-					</RightLeftAnimation>
+					</LeftRightAnimation>
 				)}
 			</Wrapper>
 			<Wrapper
@@ -270,11 +332,11 @@ function App() {
 				end={0.5}
 				style={{ margin: "0px", padding: "0px" }}
 			>
-				<DayDate post_section={pos_section} />
+				{pos_section > 1100 && <DayDate post_section={pos_section} />}
 			</Wrapper>
 			<Container>
 				<Wrapper offset={scroll} pos={1} start={0.5} end={1}>
-					<CountDownMap />
+					{pos_section > 1300 && <CountDownMap post_section={pos_section} />}
 				</Wrapper>
 			</Container>
 			<Container>
@@ -287,7 +349,7 @@ function App() {
 					<Penutup />
 				</Wrapper>
 			</Container>
-			<Container>
+			{/* <Container>
 				<div
 					style={{
 						display: "flex",
@@ -303,10 +365,22 @@ function App() {
 				<animated.div id="pdeck" style={animated_deck_photo}>
 					<PhotoDeck />
 				</animated.div>
-			</Container>
+			</Container> */}
 			<GiftModal />
-			<BottomNav />
-		</div>
+			<FloatingButton
+				onClick={(e) => {
+					e.preventDefault();
+					setIsPlayingMusic(!is_playing_music);
+				}}
+			>
+				<Icon
+					name={is_playing_music ? "pause" : "play"}
+					size="large"
+					color="white"
+				/>
+			</FloatingButton>
+			{/* <BottomNav /> */}
+		</Container>
 	);
 }
 

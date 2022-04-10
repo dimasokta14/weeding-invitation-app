@@ -31,8 +31,8 @@ const panes = [
 			<Tab.Pane attached={false}>
 				<MapComponent
 					name="Parkiran Mobil"
-					mLat="-7.268728"
-					mLng="112.7626809"
+					mLat="-7.8023177"
+					mLng="110.6471676"
 				/>
 			</Tab.Pane>
 		),
@@ -43,8 +43,8 @@ const panes = [
 			<Tab.Pane attached={false}>
 				<MapComponent
 					name="Parkiran Motor"
-					mLat="-7.3068728"
-					mLng="113.7626809"
+					mLat="-7.8023177"
+					mLng="110.6471676"
 				/>
 			</Tab.Pane>
 		),
@@ -55,9 +55,11 @@ const Map = () => {
 	return (
 		<Grid columns="equal" style={{ width: "100%" }}>
 			<Grid.Column mobile={16} computer={16} tablet={16} textAlign="center">
-				<TabWrapper>
-					<Tab menu={{ attached: false }} panes={panes} />
-				</TabWrapper>
+				<MapComponent
+					name="Lokasi Acara"
+					mLat="-7.8023177"
+					mLng="110.6471676"
+				/>
 			</Grid.Column>
 		</Grid>
 	);

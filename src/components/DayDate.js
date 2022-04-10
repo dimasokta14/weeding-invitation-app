@@ -122,134 +122,98 @@ const DayDate = ({ post_section }) => {
 		config: { duration: "1000" },
 		loop: false,
 	});
-
 	return (
-		<>
-			{post_section > 2200 && (
-				<div className="anim-pic">
-					<Grid
-						columns="equal"
+		<div className="anim-pic">
+			<Grid
+				columns="equal"
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+				}}
+			>
+				<div
+					style={{
+						marginBottom: "40px",
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "center",
+						alignItems: "center",
+					}}
+				>
+					<ScaleUpImageDecorAnimation src={Decor} />
+					<FlipUpTitleAnimation text="Weeding Schedule" />
+				</div>
+				<AnimatedScheduleCard style={style_scale_up}>
+					<Grid.Column
+						mobile={16}
+						computer={16}
+						tablet={16}
 						style={{
+							padding: "1.25rem",
+							minHeigth: "1px",
+							flex: "1 1 auto",
 							display: "flex",
+							flexDirection: "column",
 							justifyContent: "center",
 							alignItems: "center",
 						}}
 					>
-						<div
+						<h2>Akad Nikah</h2>
+						<div style={{ margin: "20px 0px" }}>
+							<DateText>Minggu, 08 Mei 2022</DateText>
+							<hr className="styled" />
+						</div>
+						<p
+							className="paragraph"
 							style={{
-								marginBottom: "40px",
-								display: "flex",
-								flexDirection: "column",
-								justifyContent: "center",
-								alignItems: "center",
+								textAlign: "center",
+								fontSize: "16px",
+								fontStyle: "italic",
 							}}
 						>
-							<ScaleUpImageDecorAnimation src={Decor} />
-							<FlipUpTitleAnimation text="Weeding Schedule" />
+							09:00 WIB <br />
+							Dk. Pendem RT02/RW06, Ds. Jarum, Kec. Bayat, Kab. Klaten, Prov
+							Jawa Tengah
+						</p>
+					</Grid.Column>
+				</AnimatedScheduleCard>
+				<AnimatedScheduleCard style={style_scale_up}>
+					<Grid.Column
+						mobile={16}
+						computer={16}
+						tablet={16}
+						style={{
+							padding: "1.25rem",
+							minHeigth: "1px",
+							flex: "1 1 auto",
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center",
+							alignItems: "center",
+						}}
+					>
+						<h2>Resepsi</h2>
+						<div style={{ margin: "20px 0px" }}>
+							<DateText>Minggu, 08 Mei 2022</DateText>
+							<hr className="styled" />
 						</div>
-						<AnimatedScheduleCard style={style_scale_up}>
-							<Grid.Column
-								mobile={16}
-								computer={16}
-								tablet={16}
-								style={{
-									padding: "1.25rem",
-									minHeigth: "1px",
-									flex: "1 1 auto",
-									display: "flex",
-									flexDirection: "column",
-									justifyContent: "center",
-									alignItems: "center",
-								}}
-							>
-								<h2>Akad Nikah</h2>
-								<div style={{ margin: "20px 0px" }}>
-									<DateText>Minggu, 08 Mei 2022</DateText>
-									<hr className="styled" />
-								</div>
-								<p
-									className="paragraph"
-									style={{
-										textAlign: "center",
-										fontSize: "16px",
-										fontStyle: "italic",
-									}}
-								>
-									08:00 - 09:00 WIB <br />
-									Jl. jalan Kec. Depok Kab.Batang, Provinsi Pekalongan
-								</p>
-							</Grid.Column>
-						</AnimatedScheduleCard>
-						<AnimatedScheduleCard style={style_scale_up}>
-							<Grid.Column
-								mobile={16}
-								computer={16}
-								tablet={16}
-								style={{
-									padding: "1.25rem",
-									minHeigth: "1px",
-									flex: "1 1 auto",
-									display: "flex",
-									flexDirection: "column",
-									justifyContent: "center",
-									alignItems: "center",
-								}}
-							>
-								<h2>Resepsi</h2>
-								<div style={{ margin: "20px 0px" }}>
-									<DateText>Minggu, 08 Mei 2022</DateText>
-									<hr className="styled" />
-								</div>
-								<p
-									className="paragraph"
-									style={{
-										textAlign: "center",
-										fontSize: "16px",
-										fontStyle: "italic",
-									}}
-								>
-									08:00 - 09:00 WIB <br />
-									Jl. jalan Kec. Depok Kab.Batang, Provinsi Pekalongan
-								</p>
-							</Grid.Column>
-						</AnimatedScheduleCard>
-						<AnimatedScheduleCard style={style_scale_up}>
-							<Grid.Column
-								mobile={16}
-								computer={16}
-								tablet={16}
-								style={{
-									padding: "1.25rem",
-									minHeigth: "1px",
-									flex: "1 1 auto",
-									display: "flex",
-									flexDirection: "column",
-									justifyContent: "center",
-									alignItems: "center",
-								}}
-							>
-								<h2>Download Mantu</h2>
-								<div style={{ margin: "20px 0px" }}>
-									<DateText>Minggu, 08 Mei 2022</DateText>
-									<hr className="styled" />
-								</div>
-								<p
-									className="paragraph"
-									style={{
-										textAlign: "center",
-										fontSize: "16px",
-										fontStyle: "italic",
-									}}
-								>
-									08:00 - 09:00 WIB <br />
-									Jl. jalan Kec. Depok Kab.Batang, Provinsi Pekalongan
-								</p>
-							</Grid.Column>
-						</AnimatedScheduleCard>
-					</Grid>
-				</div>
-			)}
-		</>
+						<p
+							className="paragraph"
+							style={{
+								textAlign: "center",
+								fontSize: "16px",
+								fontStyle: "italic",
+							}}
+						>
+							12:30 WIB <br />
+							Dk. Pendem RT02/RW06, Ds. Jarum, Kec. Bayat, Kab. Klaten, Prov
+							Jawa Tengah
+						</p>
+					</Grid.Column>
+				</AnimatedScheduleCard>
+			</Grid>
+		</div>
 	);
 };
 

@@ -56,7 +56,10 @@ const FloatingButton = styled.a`
 	color: #fff;
 	background-color: #d991a4;
 	bottom: 100px;
-	right: 40px;
+	right: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 const InfoWrapper = styled.div``;

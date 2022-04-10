@@ -2,6 +2,10 @@ import React, { Suspense } from "react";
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { isLoaded, isEmpty } from "react-redux-firebase";
+import { BrowserRouter } from "react-router-dom";
+import SplashScreen from "./components/SplashScreen";
+import { LetterPage } from "./components/LetterPage";
+import { Loader } from "semantic-ui-react";
 
 const App = React.lazy(() => import("./App"));
 const Login = React.lazy(() => import("./components/LoginForm"));
@@ -31,41 +35,26 @@ function PrivateRoute({ children, ...rest }) {
 	);
 }
 
-const Main = ({ auth }) => {
-	console.log(auth);
+const Main = () => {
 	return (
-		<HashRouter>
-			<Suspense fallback={<div>Loading...</div>}>
+		<BrowserRouter>
+			<Suspense fallback={<Loader />}>
 				<Switch>
 					<Route
 						exact
-						path="/login"
-						name="Login"
-						render={(props) => <Login {...props} />}
-					/>
-					<Route
-						exact
-						path="/"
+						path="/main"
 						name="Wedding Praatfika & Ratna"
 						render={(props) => <App {...props} />}
 					/>
 					<Route
-						path="/cp/dashboard"
-						name="Control Panel"
-						render={(props) =>
-							!auth.isEmpty ? <ControlPanel {...props} /> : <Login {...props} />
-						}
+						exact="/"
+						name="Wedding Praatfika & Ratna"
+						render={() => <LetterPage />}
 					/>
 				</Switch>
 			</Suspense>
-		</HashRouter>
+		</BrowserRouter>
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		auth: state.firebase.auth,
-	};
-};
-
-export default connect(mapStateToProps)(Main);
+export default Main;
