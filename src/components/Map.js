@@ -55,11 +55,7 @@ const Map = () => {
 	return (
 		<Grid columns="equal" style={{ width: "100%" }}>
 			<Grid.Column mobile={16} computer={16} tablet={16} textAlign="center">
-				<MapComponent
-					name="Lokasi Acara"
-					mLat="-7.8023177"
-					mLng="110.6471676"
-				/>
+				<MapComponent name="Lokasi Acara" mLat="-8.1644066" mLng="113.676371" />
 			</Grid.Column>
 		</Grid>
 	);

@@ -142,7 +142,7 @@ const DayDate = ({ post_section }) => {
 					}}
 				>
 					<ScaleUpImageDecorAnimation src={Decor} />
-					<FlipUpTitleAnimation text="Weeding Schedule" />
+					<FlipUpTitleAnimation text="Wedding Schedule" />
 				</div>
 				<AnimatedScheduleCard style={style_scale_up}>
 					<Grid.Column
@@ -161,7 +161,7 @@ const DayDate = ({ post_section }) => {
 					>
 						<h2>Akad Nikah</h2>
 						<div style={{ margin: "20px 0px" }}>
-							<DateText>Minggu, 08 Mei 2022</DateText>
+							<DateText>Jum'at, 29 Juli 2022</DateText>
 							<hr className="styled" />
 						</div>
 						<p
@@ -172,9 +172,8 @@ const DayDate = ({ post_section }) => {
 								fontStyle: "italic",
 							}}
 						>
-							09:00 WIB <br />
-							Dk. Pendem RT02/RW06, Ds. Jarum, Kec. Bayat, Kab. Klaten, Prov
-							Jawa Tengah
+							08:00 WIB <br />
+							di Kediaman mempelai wanita
 						</p>
 					</Grid.Column>
 				</AnimatedScheduleCard>
@@ -195,7 +194,7 @@ const DayDate = ({ post_section }) => {
 					>
 						<h2>Resepsi</h2>
 						<div style={{ margin: "20px 0px" }}>
-							<DateText>Minggu, 08 Mei 2022</DateText>
+							<DateText>Jum'at, 29 Juli 2022</DateText>
 							<hr className="styled" />
 						</div>
 						<p
@@ -206,9 +205,8 @@ const DayDate = ({ post_section }) => {
 								fontStyle: "italic",
 							}}
 						>
-							12:30 WIB <br />
-							Dk. Pendem RT02/RW06, Ds. Jarum, Kec. Bayat, Kab. Klaten, Prov
-							Jawa Tengah
+							16:00 WIB ~ selesai <br />
+							Jl. Arowana XV - Patian, Gebang Taman Kebonagung, Jember
 						</p>
 					</Grid.Column>
 				</AnimatedScheduleCard>

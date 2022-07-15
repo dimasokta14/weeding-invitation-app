@@ -71,8 +71,8 @@ const AttendersComponent = () => {
 						<p style={{ fontSize: "20px", fontWeight: "600" }}>
 							The Wedding of
 						</p>
-						<StyledText>Praatfika & Ratna</StyledText>
-						<DateText>08 Mei 2022</DateText>
+						<StyledText>Mega & Roni</StyledText>
+						<DateText>29 Juli 2022</DateText>
 						{/* <AttendersCard>
 							<i style={{ textAlign: "center" }}>
 								Kepada Yth <br /> Bapak/Ibu/Saudara/i

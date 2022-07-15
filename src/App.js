@@ -293,26 +293,25 @@ function App() {
 							/>
 						</Grid.Column>
 						<Grid.Column mobile={8} computer={8} tablet={8}>
-							<h3 className="title">Ratna Yulianti</h3>
+							<h3 className="title">Mega Etikasari Wahyuningtiyas</h3>
 							<p className="paragraph">
-								Putri Pertama dari pasangan Bapak <b>Jawardi</b> dan Ibu
-								<b> Endang Sri Rahayuningsih</b>
+								Putri Pertama dari pasangan Bapak <b>Junaedi</b> dan Ibu
+								<b>Tatik</b>
 							</p>
 							<p className="subtitle">
-								Dk. Pendem RT02/RW06, Ds. Jarum, Kec. Bayat, Kab. Klaten, Jawa
-								Tengah
+								Jl. Arowana XV - Patian, Gebang Taman Kebonagung, Jember
 							</p>
 						</Grid.Column>
 						<Grid.Column mobile={8} computer={8} tablet={8}>
 							<h3 className="title" style={{ textAlign: "right" }}>
-								Pra'atfika
+								M. Bahrun Syahroni
 							</h3>
 							<p className="subtitle" style={{ textAlign: "right" }}>
-								Putra Kedua dari Bapak <b>Sutikno</b> dan Ibu <b>Nurjanah</b>
+								Putra Ketiga dari Bapak <b>H. Achmad Wardi (alm)</b> dan Ibu
+								<b>Hj. Siti Aisyah/Sayuti</b>
 							</p>
 							<p className="subtitle" style={{ textAlign: "right" }}>
-								Dk. Pendem RT02/RW06, Ds. Jarum, Kec. Bayat, Kab. Klaten, Jawa
-								Tengah
+								Jl. Sultan Agung XIII - Lingk.Kauman, Jember
 							</p>
 						</Grid.Column>
 						<Grid.Column mobile={8} computer={8} tablet={8}>

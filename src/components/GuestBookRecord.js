@@ -22,39 +22,10 @@ const AnimatedBookWrapper = animated(BookWrapper);
 
 const feed_data = [
 	{
-		name: "Hafiz Ramadhan",
-		text: "Yuhukeun Praaaa !",
+		name: "Naura Fajria",
+		text: "Selamat mbak mega dan mas roni",
 		status: "Hadir",
-		date: "01-03-2022",
-	},
-	{
-		name: "Endro Wahyono",
-		text: "Siap Hadir lekuu !",
-		status: "Hadir",
-		date: "07-02-2022",
-	},
-	{
-		name: "Nanang Ahmad",
-		text: "jancukkk !",
-		status: "Hadir",
-		date: "01-04-2022",
-	},
-	{
-		name: "Dimas Okta",
-		text: "Siap Hadir lekuu !",
-		status: "Hadir",
-		date: "01-04-2022",
-	},
-	{
-		name: "Ki Joko Bodo",
-		text: "Buah jambu Buah kedondong, uhuy akhirnya kawanku nikah dong. Semoga menjadi keluarga sakinah, mawadah, warahmah aamiin!",
-		status: "Belum Tahu",
-		date: "03-03-2022",
-	},
-	{
-		name: "Pak Bambang",
-		status: "Tidak Hadir",
-		date: "01-03-2022",
+		date: "15-07-2022",
 	},
 ];
 
@@ -77,7 +48,7 @@ const FeedEvent = ({ name, status, date_time, text }) => {
 					>
 						{status}
 					</Label>
-					<Feed.Date>{dayjs().to(dayjs(date_time))}</Feed.Date>
+					<Feed.Date>{dayjs(new Date()).to(dayjs(date_time))}</Feed.Date>
 				</Feed.Summary>
 				{text && <Feed.Extra text>{text}</Feed.Extra>}
 			</Feed.Content>

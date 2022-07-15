@@ -55,9 +55,9 @@ const Penutup = () => {
 						Wassalamualaikum Warahmatullahi Wabarakaatuh
 					</p>
 					<p>
-						Kel. Bapak Jawardi <br />
-						Kel. Bapak Sutikno <br />
-						Pra’atfika & Ratna Yulianti
+						Kel. Bapak Junaidi & Ibu Tatik <br />
+						Kel. H. Achmad Wardi (alm) & Hj. Siti Aisyah/Sayuti <br />
+						Mega & Roni
 					</p>
 					<EmptySpace />
 					<p className="paragraph">

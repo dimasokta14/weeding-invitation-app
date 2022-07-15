@@ -117,7 +117,7 @@ const RSVP = (props) => {
 					<Form.Field>
 						<label>NAMA</label>
 						<input
-							placeholder="contoh: Dimas - SVK"
+							placeholder="contoh: Naura Fajria"
 							onChange={handleChange("nama")}
 						/>
 					</Form.Field>

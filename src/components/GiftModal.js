@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import BcaLogo from "../assets/bca.jpg";
 import MandiriLogo from "../assets/mandiri.jpg";
-import DummayQrCode from "../assets/qrcodedummy.svg";
+import DummayQrCode from "../assets/qr-mbak-meg.png";
 
 const ModalReducer = (state, action) => {
 	switch (action.type) {
@@ -158,7 +158,7 @@ export const GiftModal = () => {
 					</Grid>
 				</Modal.Header>
 				<Modal.Content>
-					<Grid>
+					<Grid centered>
 						<Grid.Column mobile={16} tablet={16} computer={16}>
 							<div
 								style={{
@@ -178,21 +178,21 @@ export const GiftModal = () => {
 							<BankCard
 								bank_name="BCA"
 								img={BcaLogo}
-								rekening="123123123"
-								issuer="Praatfika"
+								rekening="0240999714"
+								issuer="Mega Etikasari Wahyuning"
 							/>
-							<BankCard
+							{/* <BankCard
 								bank_name="Mandiri"
 								img={MandiriLogo}
 								rekening="123123123"
 								issuer="Ratna"
-							/>
+							/> */}
 						</Grid>
-						<Grid.Column mobile={16} tablet={16} computer={16}>
+						<Grid centered>
 							<InfoWrapper>
 								<Image src={DummayQrCode} />
 							</InfoWrapper>
-						</Grid.Column>
+						</Grid>
 					</Grid>
 				</Modal.Content>
 			</Modal>

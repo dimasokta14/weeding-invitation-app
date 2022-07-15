@@ -78,7 +78,7 @@ const WeddingTimer = ({ expiryTimestamp }) => {
 };
 
 const CountDownMap = ({ pos_section }) => {
-	const time = new Date(2022, 4, 8, 9);
+	const time = new Date(2022, 6, 29, 8);
 	time.setSeconds(time.getSeconds() + 600);
 
 	const style_timer_animated = useSpring({
@@ -116,7 +116,7 @@ const CountDownMap = ({ pos_section }) => {
 			>
 				<Map />
 				<StyledButtonCalendar
-					href="https://calendar.google.com/calendar/u/0/r/eventedit?dates=20220508T020000Z/20220508T050000Z&text=Praatfike+%26+Ratna+Wedding&details=Praatfika+%26+Ratna+Wedding+on+Sunday,+08+May+2022&location=Jl.%20Pendem%20Raya%20RT.%2002%20/%20RW.%2006%20Dusun,%20Jl.%20Pendem%20Raya%20Dusun%20II,%20Jarum,%20Kec.%20Bayat,%20Kabupaten%20Klaten,%20Jawa%20Tengah%2057462"
+					href="https://calendar.google.com/calendar/u/0/r/eventedit?dates=20220729T020000Z/20220729T050000Z&text=Mega+%26+Roni+Wedding&details=Mega+%26+Roni+Wedding+on+Friday,+29+July+2022&location=Gebang%20Taman,%20Kb.%20Agung,%20Kec.%20Kaliwates,%20Kabupaten%20Jember,%20Jawa%20Timur%2068131"
 					target="_blank"
 				>
 					Tambahkan ke kalender
